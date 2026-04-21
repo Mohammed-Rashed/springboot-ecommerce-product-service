@@ -4,6 +4,7 @@ import com.rashed.ecommerce.product.category.entity.Category;
 import com.rashed.ecommerce.product.common.entity.BaseEntity;
 import jakarta.persistence.*;
 import lombok.*;
+import lombok.experimental.SuperBuilder;
 
 import java.math.BigDecimal;
 
@@ -14,7 +15,7 @@ import java.math.BigDecimal;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@Builder
+@SuperBuilder
 public class Product extends BaseEntity {
     @Column(name = "name", nullable = false, length = 150)
     private String name;

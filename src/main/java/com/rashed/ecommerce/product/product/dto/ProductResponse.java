@@ -12,7 +12,6 @@ public record ProductResponse(
         String sku,
         String imageUrl,
         Boolean isActive,
-        Long categoryId,
-        String categoryName
+        Long categoryId
 ) {
 }
