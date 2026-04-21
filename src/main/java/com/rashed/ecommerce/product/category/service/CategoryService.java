@@ -2,6 +2,7 @@ package com.rashed.ecommerce.product.category.service;
 
 import com.rashed.ecommerce.product.category.dto.CategoryResponse;
 import com.rashed.ecommerce.product.category.dto.CreateCategoryRequest;
+import com.rashed.ecommerce.product.category.dto.UpdateCategoryRequest;
 import com.rashed.ecommerce.product.category.entity.Category;
 import com.rashed.ecommerce.product.category.repository.CategoryRepository;
 import lombok.RequiredArgsConstructor;
@@ -33,7 +34,7 @@ public class  CategoryService {
                 savedCategory.getIsActive()
         );
     }
-    public CategoryResponse updateCategory(Long id, CreateCategoryRequest request) {
+    public CategoryResponse updateCategory(Long id, UpdateCategoryRequest request) {
         Category category = categoryRepository.findById(id)
                 .orElseThrow(() -> new IllegalArgumentException("Category not found or inactive"));
 
@@ -47,6 +48,7 @@ public class  CategoryService {
         category.setName(request.name());
         category.setSlug(slug);
         category.setDescription(request.description());
+        category.setIsActive(request.isActive());
         Category updatedCategory = categoryRepository.save(category);
         return new CategoryResponse(
                 updatedCategory.getId(),
@@ -66,5 +68,6 @@ public class  CategoryService {
         }
         return slug;
     }
+
 
 }

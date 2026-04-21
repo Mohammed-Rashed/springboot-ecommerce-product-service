@@ -2,13 +2,10 @@ package com.rashed.ecommerce.product.category.controller;
 
 import com.rashed.ecommerce.product.category.dto.CategoryResponse;
 import com.rashed.ecommerce.product.category.dto.CreateCategoryRequest;
-import com.rashed.ecommerce.product.category.entity.Category;
+import com.rashed.ecommerce.product.category.dto.UpdateCategoryRequest;
 import com.rashed.ecommerce.product.category.service.CategoryService;
 import jakarta.validation.Valid;
-import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -23,7 +20,9 @@ public class CategoryController {
     }
 
     @PatchMapping("/{id}")
-    public CategoryResponse updateCategory(@PathVariable Long id, @RequestBody @Valid CreateCategoryRequest request) {
+    public CategoryResponse updateCategory(@PathVariable Long id, @RequestBody @Valid UpdateCategoryRequest request) {
         return categoryService.updateCategory(id,request);
     }
+
+
 }
